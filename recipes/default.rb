@@ -52,6 +52,22 @@ git node[:network_mapping_tool][:source_directory] do
   notifies :run, "execute[build_netmap]"
 end
 
+template "#{node[:network_mapping_tool][:source_directory]}/netmap/src/main/resources/netmap.properties" do
+  source "netmap.properties.erb"
+  mode 0644
+  notifies :run, "execute[build_netmap]"
+end
+
+template "#{node[:network_mapping_tool][:source_directory]}/netmap/src/main/webapp/WEB-INF/spring/root-context.xml" do
+  source "root-context.xml.erb"
+  mode 0644
+  variables(
+    db_user: node[:network_mapping_tool][:postgresql][:username],
+    db_password: node[:network_mapping_tool][:postgresql][:password]
+  )
+  notifies :run, "execute[build_netmap]"
+end  
+
 cron "run-chef-solo" do
   minute "*/5"
   user "root"
