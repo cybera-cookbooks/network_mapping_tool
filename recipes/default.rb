@@ -1,5 +1,8 @@
-include_recipe "java"
-include_recipe "tomcat"
+["make", "language-pack-en"].each do |pkg|
+  package pkg do
+  end.run_action(:install)
+end
+
 
 # run postgresql recipe and create database
 include_recipe "postgresql::server"
@@ -24,6 +27,8 @@ postgresql_database node[:network_mapping_tool][:postgresql][:database_name] do
   action :create
 end
 
+include_recipe "java"
+include_recipe "tomcat"
 include_recipe "maven"
 execute "build_netmap" do
   cwd "#{node[:network_mapping_tool][:source_directory]}/netmap/"
@@ -38,9 +43,13 @@ directory node[:network_mapping_tool][:source_directory] do
   recursive true
   action :create
 end
+directory "#{node[:etc][:passwd][:root][:dir]}/.ssh" do
+  recursive true
+  action :create
+end
 file "#{node[:etc][:passwd][:root][:dir]}/.ssh/id_rsa" do
   content node[:network_mapping_tool][:git][:deploy_key]
-  owner "ubuntu"
+  owner "root"
   mode 0600
 end
 ssh_known_hosts_entry 'github.com'
@@ -52,6 +61,7 @@ git node[:network_mapping_tool][:source_directory] do
   notifies :run, "execute[build_netmap]"
 end
 
+Chef::Log.error "------\n#{node[:cmdb][:api][:internal_url]}"
 template "#{node[:network_mapping_tool][:source_directory]}/netmap/src/main/resources/netmap.properties" do
   source "netmap.properties.erb"
   mode 0644

@@ -12,6 +12,7 @@ default[:network_mapping_tool][:postgresql][:username] = 'cybera'
 default[:network_mapping_tool][:postgresql][:password] = 'cybera.123'
 
 default[:postgresql][:password][:postgres] = "supersecret"
+default['postgresql']['version'] = "9.1"
 
 default[:tomcat][:port] = 8080
 # override[:tomcat][:webapp_dir] = default[:network_mapping_tool][:deploy_directory]
@@ -19,3 +20,5 @@ default[:tomcat][:keytool] = "/usr/bin/keytool"
 
 default[:cmdb][:api][:internal_url] = "http://api.cmdb.cybera.ca:4567"
 default[:cmdb][:api][:external_url] = "http://209.97.197.173:4567"
+
+default["maven"]["2"]["url"] = "http://archive.apache.org/dist/maven/binaries/apache-maven-2.2.1-bin.tar.gz"

@@ -4,7 +4,7 @@ license          'All rights reserved'
 name             'network_mapping_tool'
 description      'Installs/Configures the Network Mapping Tool'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.6.0'
+version          '0.7.0' # (June 2014 sprint)
 
 depends "database"
 depends "maven"
