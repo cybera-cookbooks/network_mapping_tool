@@ -12,7 +12,7 @@ default[:network_mapping_tool][:postgresql][:username] = 'cybera'
 default[:network_mapping_tool][:postgresql][:password] = 'cybera.123'
 
 default[:postgresql][:password][:postgres] = "supersecret"
-default['postgresql']['version'] = "9.1"
+default['postgresql']['version'] = "9.3"
 
 default[:tomcat][:port] = 8080
 # override[:tomcat][:webapp_dir] = default[:network_mapping_tool][:deploy_directory]
