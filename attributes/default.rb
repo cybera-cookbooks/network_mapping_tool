@@ -20,3 +20,6 @@ default[:tomcat][:keytool] = "/usr/bin/keytool"
 
 default[:cmdb][:api][:internal_url] = "http://api.cmdb.cybera.ca:4567"
 default[:cmdb][:api][:external_url] = "http://209.97.197.173:4567"
+
+# Maven 2.X is EOL, so we need to use the archive
+default["maven"]["2"]["url"] = "http://archive.apache.org/dist/maven/binaries/apache-maven-2.2.1-bin.tar.gz"
