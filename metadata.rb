@@ -4,7 +4,7 @@ license          'All rights reserved'
 name             'network_mapping_tool'
 description      'Installs/Configures the Network Mapping Tool'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.7.0' # (June 2014 sprint)
+version          '0.8.0' # (Feb 2016 sprint)
 
 depends "database"
 depends "maven"
@@ -12,5 +12,6 @@ depends "postgresql"
 depends "postgis"
 depends "ssh_known_hosts"
 depends "tomcat"
+depends "apt"
 
 recipe "default",         ""
