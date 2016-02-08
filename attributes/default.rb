@@ -5,7 +5,7 @@ default[:network_mapping_tool][:admin][:password] = "supersecret"
 
 default[:network_mapping_tool][:git][:repository] = "git@github.com:cybera/network-mapping-tool.git"
 default[:network_mapping_tool][:git][:revision] = "master"
-default[:network_mapping_tool][:git][:deploy_key] = "override me with a real deploy key"
+default[:network_mapping_tool][:git][:deploy_key] = ChefVault::Item.load('deployment_keys', 'network_mapping_tool')["ssh_deployment_key"]
 
 default[:network_mapping_tool][:postgresql][:database_name] = "netmap"
 default[:network_mapping_tool][:postgresql][:username] = 'cybera'
