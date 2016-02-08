@@ -12,5 +12,6 @@ depends "postgresql"
 depends "postgis"
 depends "ssh_known_hosts"
 depends "tomcat"
+depends "apt"
 
 recipe "default",         ""

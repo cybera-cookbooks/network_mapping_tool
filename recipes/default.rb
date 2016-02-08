@@ -1,3 +1,5 @@
+include_recipe 'apt'
+
 ["make", "language-pack-en"].each do |pkg|
   package pkg do
   end.run_action(:install)
