@@ -1,5 +1,11 @@
 include_recipe 'apt'
 
+execute "apt-get-update" do
+  command "apt-get update"
+  ignore_failure true
+  action :nothing
+end
+
 ["make", "language-pack-en"].each do |pkg|
   package pkg do
   end.run_action(:install)
