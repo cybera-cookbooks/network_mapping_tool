@@ -3,6 +3,13 @@
   end.run_action(:install)
 end
 
+# Chef Vault for GitHub deployment key
+chef_gem 'chef-vault' do
+  compile_time true if respond_to?(:compile_time)
+end
+require 'chef-vault'
+netmap_vault = ChefVault::Item.load("deployment_keys", "network_mapping_tool")
+
 
 # run postgresql recipe and create database
 include_recipe "postgresql::server"
@@ -48,7 +55,7 @@ directory "#{node[:etc][:passwd][:root][:dir]}/.ssh" do
   action :create
 end
 file "#{node[:etc][:passwd][:root][:dir]}/.ssh/id_rsa" do
-  content node[:network_mapping_tool][:git][:deploy_key]
+  content netmap_vault["ssh_deployment_key"]
   owner "root"
   mode 0600
 end
