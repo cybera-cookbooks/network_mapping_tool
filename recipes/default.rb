@@ -1,10 +1,8 @@
-include_recipe 'apt'
+node.override['apt']['compile_time_update'] = true
+include_recipe "apt"
 
-execute "apt-get-update" do
-  command "apt-get update"
-  ignore_failure true
-  action :nothing
-end
+node.override['build-essential']['compile_time'] = true
+include_recipe "build-essential"
 
 ["make", "language-pack-en"].each do |pkg|
   package pkg do
