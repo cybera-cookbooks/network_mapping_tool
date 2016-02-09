@@ -18,7 +18,7 @@ Since there cannot be any new line characters in the ssh key for the data bag, w
 
 `ruby -rjson -e 'puts JSON.generate({"network_mapping_tool" => File.read("deploy_key")})' > vault-ssh-private.json`
 
-Create the vault with the json file we just made:
+Create the vault with the json file we just made (attaching it to the proper role):
 
 `knife vault create deployment_keys network_mapping_tool vault-ssh-private.json -S "role:network_mapping_tool"`
 
