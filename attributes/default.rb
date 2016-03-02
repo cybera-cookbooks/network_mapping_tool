@@ -3,7 +3,7 @@ default[:network_mapping_tool][:user] = "www-data"
 default[:network_mapping_tool][:group] = "www-data"
 default[:network_mapping_tool][:admin][:password] = "supersecret"
 
-default[:network_mapping_tool][:git][:repository] = "git@github.com:cybera/network-mapping-tool.git"
+default[:network_mapping_tool][:git][:repository] = "https://github.com/cybera/network-mapping-tool"
 default[:network_mapping_tool][:git][:revision] = "master"
 
 default[:network_mapping_tool][:postgresql][:database_name] = "netmap"
