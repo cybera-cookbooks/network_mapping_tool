@@ -21,4 +21,5 @@ default[:cmdb][:api][:internal_url] = "https://netmap.cybera.ca"
 default[:cmdb][:api][:external_url] = "https://netmap.cybera.ca"
 
 # Maven 2.X is EOL, so we need to use the archive
-default["maven"]["2"]["url"] = "http://archive.apache.org/dist/maven/binaries/apache-maven-2.2.1-bin.tar.gz"
+default["maven"]["url"] = "http://archive.apache.org/dist/maven/binaries/apache-maven-2.2.1-bin.tar.gz"
+default['maven']['checksum'] = "b9a36559486a862abfc7fb2064fd1429f20333caae95ac51215d06d72c02d376"
