@@ -6,7 +6,7 @@ override_attributes(
     jdk_version: '7'
   },
   maven: {
-    version: 2
+    version: '2.2.1'
   },
   tomcat: {
     base_version: 7
